@@ -47,7 +47,7 @@ Plugin 'moll/vim-node'
 Plugin 'maksimr/vim-jsbeautify'
 Plugin 'dsawardekar/wordpress.vim'
 Plugin 'joonty/vim-phpqa'
-Plugin 'git://drupalcode.org/project/vimrc.git', {'rtp': 'bundle/vim-plugin-for-drupal/'}
+"Plugin 'git://drupalcode.org/project/vimrc.git', {'rtp': 'bundle/vim-plugin-for-drupal/'}
 Plugin 'henrybw/vim-colors-aurora'
 Plugin 'Valloric/MatchTagAlways'
 Plugin 'tpope/vim-surround'
@@ -67,6 +67,18 @@ Plugin 'marijnh/tern_for_vim' " see documentation below for 'tern'
 """"""""""""""""""""""""""""""""
 Plugin 'yggdroot/indentline'  " see documentation below
 Plugin 'vim-scripts/phpfolding.vim'
+Plugin 'spf13/PIV'
+Plugin 'tyru/open-browser.vim'
+Plugin 'flazz/vim-colorschemes'
+
+
+
+Plugin 'artur-shaik/vim-javacomplete2'
+""""""""""""""""""""""""
+""TERN config 
+""""""""""""""""""""""""
+
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -202,19 +214,22 @@ set ffs=unix,dos,mac
 "colorscheme default
 "colorscheme desert
 
-"colorscheme primary
+colorscheme primary
 "colorscheme aurora
 "colorscheme elrodeo
-colorscheme vividchalk
-
+"colorscheme vividchalk
+"colorscheme codeschool
 "for Base 16 colorscheme
 "let base16colorspace=256  " Access colors present in 256 colorspace
 "colorscheme base16-default
 
 "for Solarized colorscheme
 
+
+set background=dark
+"ctermbg=darkblue
+
 "let g:solarized_termcolors=256
-"set background=dark
 "colorscheme solarized
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
@@ -495,9 +510,24 @@ set backspace=2
 :nmap <C-N><C-N> :set invnumber<CR>
 ":set number
 au BufRead,BufNewFile *.json setf json
-:command NE NERDTree
 
 
+
+""""""""""""""""""""""""
+"Keyboard command shortcuts
+":command NE NERDTree  " maps :NE to :NERDTree command
+
+
+:command WE Wcodexsearch   "
+
+"
+"  to search for functions similar to 'wp_redirect' use,
+
+
+"This will show you prompt with the matches. Choosing an option will take
+"you directly to the definition of that function in WordPress Core.
+
+:command WS Wsimilar 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""
@@ -551,9 +581,9 @@ let g:indentLine_char = '|'
 """"""""""""""""""""""""
 
 
-set foldmethod=indent
-set foldcolumn=3 " the number of columns to use for folding display at the left
-set foldlevelstart=5
+"set foldmethod=indent
+"set foldcolumn=3 " the number of columns to use for folding display at the left
+"set foldlevelstart=5
 
 """"""""""""""""""""""""
 ""Auto-RELOAD .vimrc on edit
@@ -569,3 +599,24 @@ augroup reload_vimrc " {
 "This means, from visual mode, you can simply press ,x and Vim will filter
 "your content through tidy.
 :vmap ,x :!tidy -q -i --show-errors 0<CR>
+
+"""""""""""""""""""""""""""""""""""
+"Documentation Links
+
+"""""""""""""""""""""""""""""""""""
+"Editing Remote Files with SCP
+"http://vim.wikia.com/wiki/Editing_remote_files_via_scp_in_vim
+"http://usevim.com/2012/03/16/editing-remote-files/
+"
+"Usage
+"vim scp://root@example.com//home/user/public_html/.htaccess
+":e scp://root@example.com//home/user/public_html/.htaccess
+
+
+
+"""""""""""""""""""""""""""""""""""
+"Eclim
+
+"""""""""""""""""""""""""""""""""""
+:let g:EclimLogLevel = 'trace'
+:let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
