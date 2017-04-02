@@ -220,7 +220,7 @@ let g:NERDTreeWinSize = 45
 " Enable True Color Support (does not work with google
 " primary theme
 "
-set termguicolors
+"set termguicolors
 
 
 " Set extra options when running in GUI mode
